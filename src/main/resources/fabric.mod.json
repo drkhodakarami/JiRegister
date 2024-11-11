@@ -1,0 +1,18 @@
+{
+	"schemaVersion": 1,
+	"id": "jiregister",
+	"version": "${version}",
+	"name": "JiRegister Lib",
+	"description": "This is a library mod that is handling registry entries into the system using helper methods.",
+	"authors": [
+		"Jiraiyah"
+	],
+	"license": "MIT",
+	"environment": "*",
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.21.3",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
