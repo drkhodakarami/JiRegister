@@ -61,7 +61,7 @@ First you need to add the maven to your `build.gradle` repositories:
 repositories 
 {
 	mavenCentral()
-    maven { url 'https://repo.repsy.io/mvn/jiraiyah/jiregister' }
+    maven { url 'https://repo.repsy.io/mvn/jiraiyah/jilibs' }
 }
 ```
 
