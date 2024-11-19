@@ -70,7 +70,7 @@ then you need to add the dependency into your dependency section in `build.gradl
 ```dependencies
 dependencies 
 {
-    modImplementation include("jiraiyah.jiregister:jiregister:${jiregister_version}")
+    modImplementation include("jiraiyah.register:jiregister:${jiregister_version}")
 }
 ```
 
