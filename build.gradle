@@ -11,6 +11,7 @@ base {
 }
 
 repositories {
+	mavenCentral()
 }
 
 loom {
@@ -63,14 +64,41 @@ jar {
 	}
 }
 
+def ENV = System.getenv()
+def systemRepsyURL = ENV.REPSY_URL
+def systemRepsyUsername = ENV.REPSY_USERNAME
+def systemRepsyPassword = ENV.REPSY_PASSWORD
+
+Properties properties = new Properties()
+def propertiesFile = project.rootProject.file('local.properties')
+if (propertiesFile.exists())
+	properties.load(propertiesFile.newDataInputStream())
+
+def localRepsyUrl = properties.getProperty('REPSY_URL')
+def localRepsyUsername = properties.getProperty('REPSY_USERNAME')
+def localRepsyPassword = properties.getProperty('REPSY_PASSWORD')
+
+def repsyUrl = localRepsyUrl != null ? localRepsyUrl : systemRepsyURL
+def repsyUsername = localRepsyUsername != null ? localRepsyUsername : systemRepsyUsername
+def repsyPassword = localRepsyPassword != null ? localRepsyPassword : systemRepsyPassword
+
 publishing {
 	publications {
-		create("mavenJava", MavenPublication) {
-			artifactId = project.archives_base_name
+		maven(MavenPublication) {
+			artifactId = 'jiregister'
 			from components.java
 		}
 	}
 
 	repositories {
+		if (repsyUrl) {
+			maven {
+				url repsyUrl
+				credentials {
+					username repsyUsername
+					password repsyPassword
+				}
+			}
+		}
 	}
 }
